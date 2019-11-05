@@ -11,17 +11,25 @@ namespace PlaceMyBetAPI.Models
 {
     public class ApuestasRepository
     {
+        /*
         private MySqlConnection Connect()
         {
             string connString = "Server=127.0.0.1;Port=3306;Database=acceso_datos;Uid=root;password=;SslMode=none";
             MySqlConnection con = new MySqlConnection(connString);
 
             return con;
-        }
+        }*/
 
         internal List<Apuesta> Retrieve()
         {
-            MySqlConnection con = Connect();
+            List<Apuesta> apuestas = new List<Apuesta>();
+            using(PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                apuestas = context.Apuestas.ToList();
+            }
+            return apuestas;
+
+            /*MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from apuestas";
 
@@ -46,11 +54,13 @@ namespace PlaceMyBetAPI.Models
             {
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
-            }
+            }*/
+            return null;
         }
 
         internal List<ApuestaDTO> RetrieveDTO()
         {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "SELECT * from usuario, apuestas WHERE usuario.id = apuestas.id_usuario";
@@ -96,10 +106,13 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
-        internal void Save(Apuesta apuesta)
+        /*internal void Save(Apuesta apuesta)
         {
+            
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
 
@@ -122,10 +135,12 @@ namespace PlaceMyBetAPI.Models
             catch (MySqlException e) {
                 Debug.WriteLine("Se ha producido un error de conexión");
             }
-        }
+            
+        }*/
 
         internal List<Apuesta> ObtenerApuestasPorEmailQuery(string email, List<Usuario> users)
         {
+            /*
             int idUser = -1;
             foreach(Usuario user in users)
             {
@@ -163,10 +178,13 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
         internal List<Apuesta> ObtenerApuestasPorMercadoIdQuery(int id)
         {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from apuestas where id_mercado=@id";
@@ -194,6 +212,32 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
+        }
+
+        internal Apuesta Retrieve(int id)
+        {
+            Apuesta apuestas;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                apuestas = context.Apuestas
+                    .Where(s => s.ApuestaId == id)
+                    .FirstOrDefault();
+            }
+
+
+            return apuestas;
+        }
+
+        internal void Save(Apuesta a)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+
+            context.Apuestas.Add(a);
+            context.SaveChanges();
+
         }
     }
 }

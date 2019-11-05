@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,12 +9,14 @@ namespace PlaceMyBetAPI.Models
     public class Mercado
     {
         public int MercadoId { get; set; }
-        public int EventoId { get; set; }
         public double CuotaOver { get; set; }
         public double CuotaUnder { get; set; }
         public string TipoMercado { get; set; }
         public double DineroOver { get; set; }
         public double DineroUnder { get; set; }
+
+        public int EventoId { get; set; }
+        public Evento Evento { get; set; }
 
         public Mercado(int mercadoId, int eventId, double cuotaOver, double cuotaUnder, string tMercado, double dineroOver, double dineroUnder)
         {

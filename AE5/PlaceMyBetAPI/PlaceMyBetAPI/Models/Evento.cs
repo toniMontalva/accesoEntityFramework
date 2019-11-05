@@ -10,14 +10,16 @@ namespace PlaceMyBetAPI.Models
         public int EventoId { get; set; }
         public string EquipoLocal { get; set; }
         public string EquipoVisitante { get; set; }
-        public int MercadoId { get; set; }
+        //public int MercadoId { get; set; }
 
-        public Evento(int eventoId, string equipoLocal, string equipoVisitante, int mercId)
+        public Mercado Mercado { get; set; }
+
+        public Evento(int eventoId, string equipoLocal, string equipoVisitante/*, int mercId*/)
         {
             EventoId = eventoId;
             EquipoLocal = equipoLocal;
             EquipoVisitante = equipoVisitante;
-            MercadoId = mercId;
+            //MercadoId = mercId;
         }
     }
 

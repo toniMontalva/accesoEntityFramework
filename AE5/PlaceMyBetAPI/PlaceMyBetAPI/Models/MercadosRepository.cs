@@ -10,6 +10,7 @@ namespace PlaceMyBetAPI.Models
 {
     public class MercadosRepository
     {
+        /*
         private MySqlConnection Connect()
         {
             string connString = "Server=127.0.0.1;Port=3306;Database=acceso_datos;Uid=root;password=;SslMode=none";
@@ -17,9 +18,19 @@ namespace PlaceMyBetAPI.Models
 
             return con;
         }
+        */
 
         internal List<Mercado> Retrieve()
         {
+            List<Mercado> mercados = new List<Mercado>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercados = context.Discos.ToList();
+            }
+
+            return mercados;
+
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from mercados";
@@ -46,10 +57,13 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
         internal List<MercadoDTO> RetrieveDTO()
         {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from mercados";
@@ -76,6 +90,8 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
         /*internal void SaveMercadoNuevo(Mercado mercado)
@@ -86,7 +102,8 @@ namespace PlaceMyBetAPI.Models
         }*/
 
         internal List<Mercado> MercadosQuery(int id, double tM, double cO, double cU)
-        {            
+        {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
 
@@ -126,10 +143,24 @@ namespace PlaceMyBetAPI.Models
                 return null;
             }
             return mercados;
+            */
+            return null;
         }
 
         internal Mercado BuscarMercadoPorID(int id)
         {
+            Mercado mercado;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                mercado = context.Mercados
+                    .Where(s => s.MercadoId == id)
+                    .FirstOrDefault();
+            }
+
+
+            return mercado;
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from mercados where id=@id";
@@ -155,6 +186,8 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
         internal Mercado QueMercadoEsLaApuesta(Apuesta apuesta)
@@ -164,6 +197,7 @@ namespace PlaceMyBetAPI.Models
 
         internal Mercado RecalculoCuotas(Mercado mercado, Apuesta apuesta)
         {
+            /*
             double probabilidadOver = 0.0;
             double probabilidadUnder = 0.0;
             string tipoApuesta = apuesta.Tipo.ToLower();
@@ -183,16 +217,20 @@ namespace PlaceMyBetAPI.Models
 
 
             return mercado;
+            */
+            return null;
         }
 
         internal void UpdateMercadoExistente(int id, Apuesta apuesta)
         {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             Mercado mercado = QueMercadoEsLaApuesta(apuesta);
             mercado = RecalculoCuotas(mercado, apuesta);
 
-            /*command.CommandText = "UPDATE mercados SET id=@id, id_evento=@id_evento, cuota_over=@cuota_over, cuota_under=@cuota_under, dinero_over=@dinero_over," +
+            // Esto no
+            command.CommandText = "UPDATE mercados SET id=@id, id_evento=@id_evento, cuota_over=@cuota_over, cuota_under=@cuota_under, dinero_over=@dinero_over," +
                 "dinero_under=@dinero_under, tipo_mercado=@tipo_mercado WHERE id=@id";
 
             command.Parameters.AddWithValue("@id", mercado.MercadoId);
@@ -202,7 +240,9 @@ namespace PlaceMyBetAPI.Models
             command.Parameters.AddWithValue("@dinero_over", mercado.DineroOver);
             command.Parameters.AddWithValue("@dinero_under", mercado.DineroUnder);
             command.Parameters.AddWithValue("@tipo_mercado", mercado.TipoMercado);
-            */
+
+            // Tampoco hasta aqui
+            
 
             command.CommandText = "UPDATE mercados SET cuota_over=@cuota_over, cuota_under=@cuota_under, dinero_over=@dinero_over," +
                 "dinero_under=@dinero_under WHERE id=@id";
@@ -223,6 +263,15 @@ namespace PlaceMyBetAPI.Models
             {
                 Debug.WriteLine("Se ha producido un error de conexión.");
             }
+            */
+        }
+
+        internal void Save(Mercado m)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+
+            context.Mercados.Add(m);
+            context.SaveChanges();
         }
     }
 }

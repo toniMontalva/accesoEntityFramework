@@ -9,7 +9,7 @@ namespace PlaceMyBetAPI.Models
 {
     public class UsuariosRepository
     {
-
+        /*
         private MySqlConnection Connect()
         {
             string connString = "Server=127.0.0.1;Port=3306;Database=acceso_datos;Uid=root;password=;SslMode=none";
@@ -17,9 +17,18 @@ namespace PlaceMyBetAPI.Models
 
             return con;
         }
+        */
 
         internal List<Usuario> Retrieve()
         {
+            List<Usuario> usuarios = new List<Usuario>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                usuarios = context.Usuarios.ToList();
+            }
+
+            return usuarios;
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from usuario";
@@ -45,6 +54,31 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;            
+        }
+
+        internal Usuario Retrieve(int id)
+        {
+            Usuario usuario;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                usuario = context.Usuarios
+                    .Where(s => s.UsuarioId == id)
+                    .FirstOrDefault();
+            }
+
+
+            return usuario;
+        }
+
+        internal void Save(Usuario u)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+
+            context.Usuarios.Add(u);
+            context.SaveChanges();
         }
 
     }

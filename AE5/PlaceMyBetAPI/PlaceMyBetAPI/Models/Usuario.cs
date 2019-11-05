@@ -15,6 +15,9 @@ namespace PlaceMyBetAPI.Models
         public int Edad { get; set; }
         public double Saldo { get; set; }
 
+        public Cuentas Cuentas { get; set; }
+        public Apuesta Apuesta { get; set; }
+
         public Usuario(int usuarioId, string nombre, string apellidos, string email, string password, int edad, double saldo)
         {
             UsuarioId = usuarioId;

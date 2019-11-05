@@ -9,16 +9,26 @@ namespace PlaceMyBetAPI.Models
 {
     public class EventosRepository
     {
+        /*
         private MySqlConnection Connect()
         {
             string connString = "Server=127.0.0.1;Port=3306;Database=acceso_datos;Uid=root;password=;SslMode=none";
             MySqlConnection con = new MySqlConnection(connString);
 
             return con;
-        }
+        }*/
 
         internal List<Evento> Retrieve()
         {
+            List<Evento> eventos = new List<Evento>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                eventos = context.Eventos.ToList();
+            }
+
+            return eventos;
+
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from eventos";
@@ -45,10 +55,13 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
         }
 
         internal List<EventoDTO> RetrieveDTO()
         {
+            /*
             MySqlConnection con = Connect();
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "select * from eventos";
@@ -75,6 +88,22 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
                 return null;
             }
+            */
+            return null;
+        }
+
+        internal Evento Retrieve(int id)
+        {
+            Evento evento;
+
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                evento = context.Eventos
+                    .Where(s => s.EventoId == id)
+                    .FirstOrDefault();
+            }
+            
+            return evento;
         }
     }
 }
