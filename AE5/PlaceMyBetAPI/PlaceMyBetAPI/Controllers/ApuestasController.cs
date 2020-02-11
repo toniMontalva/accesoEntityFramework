@@ -40,7 +40,7 @@ namespace PlaceMyBetAPI.Controllers
         }
 
         // GET: api/Apuestas?merId=valor
-        [Authorize(Roles ="admin")]
+        //[Authorize(Roles ="admin")]
         public IEnumerable<Apuesta> GetApuestasPorMercadoId(int merId)
         {
             /*var repo = new ApuestasRepository();
@@ -51,13 +51,13 @@ namespace PlaceMyBetAPI.Controllers
         }
 
         // POST: api/Apuestas
-        [Authorize]
+        //[Authorize]
         public void Post([FromBody]Apuesta apuesta)
         {
             var repo = new ApuestasRepository();
             repo.Save(apuesta);
             var repoUpdate = new MercadosRepository();
-            repoUpdate.UpdateMercadoExistente(apuesta.Mercado.MercadoId, apuesta);
+            repoUpdate.UpdateMercadoExistente(apuesta.MercadoId, apuesta);
         }
 
         // PUT: api/Apuestas/5

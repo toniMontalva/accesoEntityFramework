@@ -55,7 +55,7 @@ namespace PlaceMyBetAPI.Models
             Mercado mercado1 = new Mercado(1, 1.80, 1.57, "1.5", 100, 100, evento1.EventoId);
             Mercado mercado2 = new Mercado(2, 1.70, 1.35, "3.5", 150, 180, evento2.EventoId);
 
-            Apuesta apuesta = new Apuesta(1, 1.8, 50, "over 1.5", usuario.UsuarioId, evento1.EventoId, mercado1.MercadoId);
+            Apuesta apuesta = new Apuesta(1, 1.8, 50, "over 1.5", usuario.UsuarioId, mercado1.MercadoId);
 
             modelBuilder.Entity<Apuesta>().HasData(apuesta);
             modelBuilder.Entity<Cuenta>().HasData(cuenta);

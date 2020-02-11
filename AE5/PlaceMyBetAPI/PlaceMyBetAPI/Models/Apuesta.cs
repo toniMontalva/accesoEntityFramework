@@ -16,13 +16,12 @@ namespace PlaceMyBetAPI.Models
         public Mercado Mercado { get; set; }
         public int MercadoId { get; set; }
 
-        public Apuesta(int apuestaId, double cuota, double cantidad, string tipo, int usuarioId, int eventoId, int mercadoId)
+        public Apuesta(int apuestaId, double cuota, double cantidad, string tipo, int usuarioId, int mercadoId)
         {
             ApuestaId = apuestaId;
             Cuota = cuota;
             Cantidad = cantidad;
             UsuarioId = usuarioId;
-            //EventoId = eventoId;
             MercadoId = mercadoId;
             Tipo = tipo;
         }
