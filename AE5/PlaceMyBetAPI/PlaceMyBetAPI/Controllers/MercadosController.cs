@@ -30,11 +30,11 @@ namespace PlaceMyBetAPI.Controllers
         }
 
         // GET: api/Mercados
-        public IEnumerable<Mercado> Get()
+        public IEnumerable<MercadoDTO> Get()
         {
             var repo = new MercadosRepository();
             //List<Evento> eventos = repo.Retrieve();
-            List<Mercado> mercados = repo.Retrieve();
+            List<MercadoDTO> mercados = repo.RetrieveDTO();
 
             return mercados;
         }

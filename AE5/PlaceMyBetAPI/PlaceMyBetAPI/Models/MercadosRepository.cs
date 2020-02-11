@@ -11,6 +11,11 @@ namespace PlaceMyBetAPI.Models
 {
     public class MercadosRepository
     {
+        public MercadoDTO ToDTO(Mercado mercado)
+        {
+            return new MercadoDTO(mercado.CuotaUnder, mercado.CuotaOver, mercado.TipoMercado);
+        }
+
         internal List<Mercado> Retrieve()
         {
             List<Mercado> mercados = new List<Mercado>();
@@ -18,6 +23,18 @@ namespace PlaceMyBetAPI.Models
             {
                 //mercados = context.Mercados.ToList();
                 mercados = context.Mercados.Include(p => p.Evento).ToList();
+            }
+
+            return mercados;
+        }
+
+        internal List<MercadoDTO> RetrieveDTO()
+        {
+            List<MercadoDTO> mercados = new List<MercadoDTO>();
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                //mercados = context.Mercados.ToList();
+                mercados = context.Mercados.Select(p => ToDTO(p)).ToList();
             }
 
             return mercados;

@@ -34,6 +34,20 @@ namespace PlaceMyBetAPI.Models
         public Mercado()
         {
 
-        }
+        }        
+    }
+
+    public class MercadoDTO
+    {
+        public double CuotaUnder { get; set; }
+        public double CuotaOver { get; set; }
+        public string TipoMercado { get; set; }
+
+        public MercadoDTO(double cuotaUnder, double cuotaOver, string tipoMercado)
+        {
+            CuotaOver = cuotaOver;
+            CuotaUnder = cuotaUnder;
+            TipoMercado = tipoMercado;
+        }        
     }
 }
