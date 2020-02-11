@@ -59,7 +59,7 @@ namespace PlaceMyBetAPI.Models
             return null;
         }
 
-        internal List<EventoDTO> RetrieveDTO()
+        internal List<Evento> RetrieveDTO()
         {
             /*
             MySqlConnection con = Connect();

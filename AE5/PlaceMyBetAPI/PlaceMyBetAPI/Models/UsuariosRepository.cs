@@ -69,7 +69,6 @@ namespace PlaceMyBetAPI.Models
                     .FirstOrDefault();
             }
 
-
             return usuario;
         }
 

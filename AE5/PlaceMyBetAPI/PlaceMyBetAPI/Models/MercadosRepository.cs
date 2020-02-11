@@ -25,7 +25,7 @@ namespace PlaceMyBetAPI.Models
             List<Mercado> mercados = new List<Mercado>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                mercados = context.Discos.ToList();
+                mercados = context.Mercados.ToList();
             }
 
             return mercados;
@@ -61,7 +61,7 @@ namespace PlaceMyBetAPI.Models
             return null;
         }
 
-        internal List<MercadoDTO> RetrieveDTO()
+        internal List<Mercado> RetrieveDTO()
         {
             /*
             MySqlConnection con = Connect();
@@ -158,7 +158,6 @@ namespace PlaceMyBetAPI.Models
                     .FirstOrDefault();
             }
 
-
             return mercado;
             /*
             MySqlConnection con = Connect();
@@ -192,7 +191,7 @@ namespace PlaceMyBetAPI.Models
 
         internal Mercado QueMercadoEsLaApuesta(Apuesta apuesta)
         {
-            return BuscarMercadoPorID(apuesta.MercadoId);
+            return BuscarMercadoPorID(apuesta.Mercado.MercadoId);
         }
 
         internal Mercado RecalculoCuotas(Mercado mercado, Apuesta apuesta)

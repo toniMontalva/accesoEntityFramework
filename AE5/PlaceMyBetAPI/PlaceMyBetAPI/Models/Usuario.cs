@@ -14,9 +14,13 @@ namespace PlaceMyBetAPI.Models
         public string Password { get; set; }
         public int Edad { get; set; }
         public double Saldo { get; set; }
+        public Cuenta Cuenta { get; set; }
+        public List<Apuesta> Apuestas { get; set; }
 
-        public Cuentas Cuentas { get; set; }
-        public Apuesta Apuesta { get; set; }
+        public Usuario()
+        {
+
+        }
 
         public Usuario(int usuarioId, string nombre, string apellidos, string email, string password, int edad, double saldo)
         {
@@ -27,23 +31,6 @@ namespace PlaceMyBetAPI.Models
             Password = password;
             Edad = edad;
             Saldo = saldo;
-        }
-
-        public class UsuarioDTO
-        {
-            public string Nombre { get; set; }
-            public string Apellidos { get; set; }
-            public string Email { get; set; }
-            public int Edad { get; set; }
-            public double Saldo { get; set; }
-
-            public UsuarioDTO(string nombre, string apellidos, string email, int edad)
-            {
-                Nombre = nombre;
-                Apellidos = apellidos;
-                Email = email;
-                Edad = edad;
-            }
         }
     }
 }

@@ -315,11 +315,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200211205855_MyFirstMigration.cs" />
+    <Compile Include="Migrations\20200211205855_MyFirstMigration.designer.cs">
+      <DependentUpon>20200211205855_MyFirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PlaceMyBetContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Apuesta.cs" />
     <Compile Include="Models\ApuestasRepository.cs" />
-    <Compile Include="Models\Cuentas.cs" />
+    <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\PlaceMyBetContext.cs" />
     <Compile Include="Models\EventosRepository.cs" />
@@ -399,7 +404,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Views\Usuarios\" />
   </ItemGroup>
   <ItemGroup>

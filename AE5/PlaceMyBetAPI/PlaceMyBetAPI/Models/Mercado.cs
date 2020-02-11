@@ -17,30 +17,23 @@ namespace PlaceMyBetAPI.Models
 
         public int EventoId { get; set; }
         public Evento Evento { get; set; }
+        
+        public List<Apuesta> Apuestas { get; set; }
 
-        public Mercado(int mercadoId, int eventId, double cuotaOver, double cuotaUnder, string tMercado, double dineroOver, double dineroUnder)
+        public Mercado(int mercadoId, double cuotaOver, double cuotaUnder, string tipoMercado, double dineroOver, double dineroUnder, int eventoId)
         {
             MercadoId = mercadoId;
-            EventoId = eventId;
             CuotaOver = cuotaOver;
             CuotaUnder = cuotaUnder;
-            tMercado = TipoMercado;
+            tipoMercado = TipoMercado;
             DineroOver = dineroOver;
             DineroUnder = dineroUnder;
+            EventoId = eventoId;
         }
-    }
 
-    public class MercadoDTO
-    {
-        public double CuotaOver { get; set; }
-        public double CuotaUnder { get; set; }
-        public string TipoMercado { get; set; }
-
-        public MercadoDTO(double cuotaOver, double cuotaUnder, string tMercado)
+        public Mercado()
         {
-            CuotaOver = cuotaOver;
-            CuotaUnder = cuotaUnder;
-            TipoMercado = tMercado;
+
         }
     }
 }

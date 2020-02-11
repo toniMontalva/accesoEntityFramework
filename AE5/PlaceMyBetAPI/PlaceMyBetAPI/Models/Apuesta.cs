@@ -11,42 +11,25 @@ namespace PlaceMyBetAPI.Models
         public double Cuota { get; set; }
         public double Cantidad { get; set; }
         public string Tipo { get; set; }
+        public Usuario Usuario { get; set; }
         public int UsuarioId { get; set; }
-        public int EventoId { get; set; }
+        public Mercado Mercado { get; set; }
         public int MercadoId { get; set; }
 
-        public Usuario Usuario { get; set; }
-        public Evento Evento { get; set; }
-        public Mercado Mercado { get; set; }
-
-        public Apuesta(int apuestaId, double cuota, double cantidad, string tipo, int usrID, int evnID, int merID)
+        public Apuesta(int apuestaId, double cuota, double cantidad, string tipo, int usuarioId, int eventoId, int mercadoId)
         {
             ApuestaId = apuestaId;
             Cuota = cuota;
             Cantidad = cantidad;
+            UsuarioId = usuarioId;
+            //EventoId = eventoId;
+            MercadoId = mercadoId;
             Tipo = tipo;
-            UsuarioId = usrID;
-            EventoId = evnID;
-            MercadoId = merID;
         }
-    }
 
-    public class ApuestaDTO
-    {
-        public string UsrEmail { get; set; }
-        public string TipoMercado { get; set; }
-        public double Cuota { get; set; }
-        public string TipoOverUnder { get; set; }
-        public double Cantidad { get; set; }            
-
-        public ApuestaDTO(string email, string tM, double cuota, string tipoOU, double cantidad)
+        public Apuesta()
         {
-            UsrEmail = email;
-            TipoMercado = tM;
-            Cuota = cuota;
-            TipoOverUnder = tipoOU;
-            Cantidad = cantidad;
+
         }
     }
-
 }
