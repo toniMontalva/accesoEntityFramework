@@ -12,14 +12,39 @@ namespace PlaceMyBetAPI.Models
 {
     public class ApuestasRepository
     {
+        public ApuestaDTO ToDTO(Apuesta apuesta)
+        {
+            int eventoId;
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                eventoId = context.Mercados.FirstOrDefault(m => m.MercadoId == apuesta.MercadoId).EventoId;
+            }
+
+            return new ApuestaDTO(apuesta.UsuarioId, eventoId, apuesta.Cuota, apuesta.Cantidad, apuesta.Tipo, apuesta.Mercado);
+        }
+
         internal List<Apuesta> Retrieve()
         {
             List<Apuesta> apuestas = new List<Apuesta>();
+
             using(PlaceMyBetContext context = new PlaceMyBetContext())
             {
                 //apuestas = context.Apuestas.ToList();
                 apuestas = context.Apuestas.Include(p => p.Mercado).ToList();
             }
+
+            return apuestas;
+        }
+
+        internal List<ApuestaDTO> RetrieveDTO()
+        {
+            List<ApuestaDTO> apuestas = new List<ApuestaDTO>();
+
+            using(PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                apuestas = context.Apuestas.Include(p => p.Mercado).Select(p => ToDTO(p)).ToList();
+            }
+
             return apuestas;
         }
 
