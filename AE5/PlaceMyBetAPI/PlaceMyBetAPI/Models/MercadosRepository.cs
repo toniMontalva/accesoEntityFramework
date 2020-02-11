@@ -61,92 +61,6 @@ namespace PlaceMyBetAPI.Models
             return null;
         }
 
-        internal List<Mercado> RetrieveDTO()
-        {
-            /*
-            MySqlConnection con = Connect();
-            MySqlCommand command = con.CreateCommand();
-            command.CommandText = "select * from mercados";
-
-            try
-            {
-                con.Open();
-                MySqlDataReader res = command.ExecuteReader();
-
-                MercadoDTO mer = null;
-                List<MercadoDTO> mercados = new List<MercadoDTO>();
-                while (res.Read())
-                {
-                    Debug.WriteLine("Recuperado: " + res.GetInt32(0) + " " + res.GetInt32(1) + " " + res.GetDouble(2) + " " + res.GetDouble(3) + " " + res.GetString(6) + " " + res.GetDouble(4) + " " + res.GetDouble(5));
-                    mer = new MercadoDTO(res.GetDouble(2), res.GetDouble(3), res.GetString(6));
-                    mercados.Add(mer);
-                }
-
-                con.Close();
-                return mercados;
-            }
-            catch (MySqlException)
-            {
-                Debug.WriteLine("Se ha producido un error de conexión.");
-                return null;
-            }
-            */
-            return null;
-        }
-
-        /*internal void SaveMercadoNuevo(Mercado mercado)
-        {
-            MySqlConnection con = Connect();
-            MySqlCommand command = con.CreateCommand();
-            command.CommandText = "insert";
-        }*/
-
-        internal List<Mercado> MercadosQuery(int id, double tM, double cO, double cU)
-        {
-            /*
-            MySqlConnection con = Connect();
-            MySqlCommand command = con.CreateCommand();
-
-            CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
-            culInfo.NumberFormat.NumberDecimalSeparator = ".";
-            culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
-            culInfo.NumberFormat.PercentDecimalSeparator = ".";
-            culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture = culInfo;
-
-            command.CommandText = "select * from mercados where id_evento=@id and tipo_mercado=@tM and cuota_over=@cO and cuota_under=@cU";
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@tM", tM);
-            command.Parameters.AddWithValue("@cO", cO);
-            command.Parameters.AddWithValue("@cU", cU);
-
-            List<Mercado> mercados = new List<Mercado>();
-
-            try
-            {
-                con.Open();
-                MySqlDataReader res = command.ExecuteReader();
-
-                Mercado mer = null;
-                while (res.Read())
-                {
-                    Debug.WriteLine("Recuperado: " + res.GetInt32(0) + " " + res.GetInt32(1) + " " + res.GetDouble(2) + " " + res.GetDouble(3) + " " + res.GetString(6) + " " + res.GetDouble(4) + " " + res.GetDouble(5));
-                    mer = new Mercado(res.GetInt32(0), res.GetInt32(1), res.GetDouble(2), res.GetDouble(3), res.GetString(6), res.GetDouble(4), res.GetDouble(5));
-                }
-
-                mercados.Add(mer);
-                con.Close();
-            }
-            catch (MySqlException)
-            {
-                Debug.WriteLine("Se ha producido un error de conexión.");
-                return null;
-            }
-            return mercados;
-            */
-            return null;
-        }
-
         internal Mercado BuscarMercadoPorID(int id)
         {
             Mercado mercado;
@@ -159,34 +73,6 @@ namespace PlaceMyBetAPI.Models
             }
 
             return mercado;
-            /*
-            MySqlConnection con = Connect();
-            MySqlCommand command = con.CreateCommand();
-            command.CommandText = "select * from mercados where id=@id";
-            command.Parameters.AddWithValue("@id", id);
-
-            try
-            {
-                con.Open();
-                MySqlDataReader res = command.ExecuteReader();
-
-                Mercado mer = null;
-                while (res.Read())
-                {
-                    Debug.WriteLine("Recuperado: " + res.GetInt32(0) + " " + res.GetInt32(1) + " " + res.GetDouble(2) + " " + res.GetDouble(3) + " " + res.GetString(6) + " " + res.GetDouble(4) + " " + res.GetDouble(5));
-                    mer = new Mercado(res.GetInt32(0), res.GetInt32(1), res.GetDouble(2), res.GetDouble(3), res.GetString(6), res.GetDouble(4), res.GetDouble(5));
-                }
-
-                con.Close();
-                return mer;
-            }
-            catch (MySqlException)
-            {
-                Debug.WriteLine("Se ha producido un error de conexión.");
-                return null;
-            }
-            */
-            return null;
         }
 
         internal Mercado QueMercadoEsLaApuesta(Apuesta apuesta)
