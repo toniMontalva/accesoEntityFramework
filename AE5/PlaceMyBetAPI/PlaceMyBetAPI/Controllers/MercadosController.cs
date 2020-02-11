@@ -32,7 +32,7 @@ namespace PlaceMyBetAPI.Controllers
         // GET: api/Mercados?id=valor1&tMercado=valor2&cuotaOver=valor3&cuotaUnder=valor4
         public List<Mercado> GetMercados(int idE, double tM, double cOver, double cUnder)
         {
-            CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
+            /*CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
             culInfo.NumberFormat.NumberDecimalSeparator = ".";
             culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
             culInfo.NumberFormat.PercentDecimalSeparator = ".";
@@ -42,7 +42,8 @@ namespace PlaceMyBetAPI.Controllers
             var repo = new MercadosRepository();
             List<Mercado> mercados = repo.MercadosQuery(idE, tM, cOver, cUnder);
 
-            return mercados;
+            return mercados;*/
+            return null;
 
         }
 

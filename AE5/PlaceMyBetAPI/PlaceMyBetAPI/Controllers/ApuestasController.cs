@@ -29,23 +29,25 @@ namespace PlaceMyBetAPI.Controllers
         // GET: api/Apuestas?email=valor
         public IEnumerable<Apuesta> GetApuestas(string email)
         {
-            var repo = new ApuestasRepository();
+            /*var repo = new ApuestasRepository();
             var repoUser = new UsuariosRepository();
             List<Usuario> usuarios = repoUser.Retrieve();
 
             List<Apuesta> apuestas = repo.ObtenerApuestasPorEmailQuery(email, usuarios);
 
-            return apuestas;
+            return apuestas;*/
+            return null;
         }
 
         // GET: api/Apuestas?merId=valor
         [Authorize(Roles ="admin")]
         public IEnumerable<Apuesta> GetApuestasPorMercadoId(int merId)
         {
-            var repo = new ApuestasRepository();
+            /*var repo = new ApuestasRepository();
 
             List<Apuesta> apuestas = repo.ObtenerApuestasPorMercadoIdQuery(merId);        
-            return apuestas;
+            return apuestas;*/
+            return null;
         }
 
         // POST: api/Apuestas

@@ -33,5 +33,13 @@ namespace PlaceMyBetAPI.Models
             
             return evento;
         }
+
+        internal void Save(Evento evento)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+
+            context.Eventos.Add(evento);
+            context.SaveChanges();
+        }
     }
 }

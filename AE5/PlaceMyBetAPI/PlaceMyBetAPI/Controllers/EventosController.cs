@@ -31,8 +31,10 @@ namespace PlaceMyBetAPI.Controllers
         }
 
         // POST: api/Eventos
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Evento evento)
         {
+            var repo = new EventosRepository();
+            repo.Save(evento);
         }
 
         // PUT: api/Eventos/5
