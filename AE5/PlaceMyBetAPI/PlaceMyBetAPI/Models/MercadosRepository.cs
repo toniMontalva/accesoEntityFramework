@@ -10,16 +10,6 @@ namespace PlaceMyBetAPI.Models
 {
     public class MercadosRepository
     {
-        /*
-        private MySqlConnection Connect()
-        {
-            string connString = "Server=127.0.0.1;Port=3306;Database=acceso_datos;Uid=root;password=;SslMode=none";
-            MySqlConnection con = new MySqlConnection(connString);
-
-            return con;
-        }
-        */
-
         internal List<Mercado> Retrieve()
         {
             List<Mercado> mercados = new List<Mercado>();
@@ -29,36 +19,6 @@ namespace PlaceMyBetAPI.Models
             }
 
             return mercados;
-
-            /*
-            MySqlConnection con = Connect();
-            MySqlCommand command = con.CreateCommand();
-            command.CommandText = "select * from mercados";
-
-            try
-            {
-                con.Open();
-                MySqlDataReader res = command.ExecuteReader();
-
-                Mercado mer = null;
-                List<Mercado> mercados = new List<Mercado>();
-                while (res.Read())
-                {
-                    Debug.WriteLine("Recuperado: " + res.GetInt32(0) + " " + res.GetInt32(1) + " " + res.GetDouble(2) + " " + res.GetDouble(3) + " " + res.GetString(6) + " " + res.GetDouble(4) + " " + res.GetDouble(5));
-                    mer = new Mercado(res.GetInt32(0), res.GetInt32(1), res.GetDouble(2), res.GetDouble(3), res.GetString(6), res.GetDouble(4), res.GetDouble(5));
-                    mercados.Add(mer);
-                }
-
-                con.Close();
-                return mercados;
-            }
-            catch (MySqlException)
-            {
-                Debug.WriteLine("Se ha producido un error de conexión.");
-                return null;
-            }
-            */
-            return null;
         }
 
         internal Mercado BuscarMercadoPorID(int id)
@@ -73,6 +33,14 @@ namespace PlaceMyBetAPI.Models
             }
 
             return mercado;
+        }
+
+        internal void Save(Mercado m)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+
+            context.Mercados.Add(m);
+            context.SaveChanges();
         }
 
         internal Mercado QueMercadoEsLaApuesta(Apuesta apuesta)
@@ -149,14 +117,6 @@ namespace PlaceMyBetAPI.Models
                 Debug.WriteLine("Se ha producido un error de conexión.");
             }
             */
-        }
-
-        internal void Save(Mercado m)
-        {
-            PlaceMyBetContext context = new PlaceMyBetContext();
-
-            context.Mercados.Add(m);
-            context.SaveChanges();
-        }
+        }        
     }
 }
