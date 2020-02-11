@@ -29,7 +29,7 @@ namespace PlaceMyBetAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=acceso_datos;Uid=root;Pwd=''; SslMode = none");
+                optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=EntityFrameworkTest;Uid=root;Pwd=''; SslMode = none");
             }
         }
 

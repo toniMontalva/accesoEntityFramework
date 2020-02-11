@@ -315,9 +315,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200211205855_MyFirstMigration.cs" />
-    <Compile Include="Migrations\20200211205855_MyFirstMigration.designer.cs">
-      <DependentUpon>20200211205855_MyFirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20200211212726_CrearBD.cs" />
+    <Compile Include="Migrations\20200211212726_CrearBD.designer.cs">
+      <DependentUpon>20200211212726_CrearBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200211213703_PruebaCreacionBDConDatos.cs" />
+    <Compile Include="Migrations\20200211213703_PruebaCreacionBDConDatos.designer.cs">
+      <DependentUpon>20200211213703_PruebaCreacionBDConDatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\PlaceMyBetContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
