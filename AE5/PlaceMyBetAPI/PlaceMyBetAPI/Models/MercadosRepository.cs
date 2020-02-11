@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace PlaceMyBetAPI.Models
             List<Mercado> mercados = new List<Mercado>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                mercados = context.Mercados.ToList();
+                //mercados = context.Mercados.ToList();
+                mercados = context.Mercados.Include(p => p.Evento).ToList();
             }
 
             return mercados;
