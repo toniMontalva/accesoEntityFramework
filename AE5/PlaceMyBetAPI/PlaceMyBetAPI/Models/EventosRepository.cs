@@ -51,5 +51,12 @@ namespace PlaceMyBetAPI.Models
             context.Eventos.Update(evento);
             context.SaveChanges();
         }
+
+        internal void Delete(Evento evento)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+            context.Eventos.Remove(evento);
+            context.SaveChanges();
+        }
     }
 }

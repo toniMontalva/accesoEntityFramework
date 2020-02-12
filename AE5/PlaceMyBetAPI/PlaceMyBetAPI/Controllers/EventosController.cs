@@ -49,6 +49,10 @@ namespace PlaceMyBetAPI.Controllers
         // DELETE: api/Eventos/5
         public void Delete(int id)
         {
+            var repo = new EventosRepository();
+            Evento evento = repo.Retrieve(id);
+
+            repo.Delete(evento);
         }
     }
 }
