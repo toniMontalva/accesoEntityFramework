@@ -41,5 +41,15 @@ namespace PlaceMyBetAPI.Models
             context.Eventos.Add(evento);
             context.SaveChanges();
         }
+
+        internal void Update(Evento evento, string equipoLocal, string equipoVisitante)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+            evento.EquipoLocal = equipoLocal;
+            evento.EquipoVisitante = equipoVisitante;
+
+            context.Eventos.Update(evento);
+            context.SaveChanges();
+        }
     }
 }
